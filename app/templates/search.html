@@ -1,0 +1,285 @@
+<html>
+
+<head>
+    <title>Home</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/extra/js/search.js"></script>
+<link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+<link rel="stylesheet" href="/extra/css/search.css">
+
+<body>
+    <section id="blur">
+        <nav class="navbar">
+        <div style="display: flex;
+  justify-content: space-between;">
+            <div style="margin-left: 1%">
+            <h1><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+            </div>
+            <div style="margin-right: 1%;  margin-top: 1.2%; vertical-align: middle;">
+                <div>
+                    <ul class="nav nav-right">
+                        <li>
+                            <div>
+                                <div>
+                                    {% if message %}
+                                    <a onclick="hide_profile()">
+                                        <img style="vertical-align:middle" src="/extra/img/user-button.png" height="40px" width="40px">
+                                        {{message[0]}} {{message[1]}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" style="z-index: -1; display: none;" id="viewProfile">
+                                <form action="{{url_for('view_profile')}}">
+                                    <button class="button-submit"> View profile </button>
+                                </form>
+                                <form action="{{url_for('logout')}}">
+                                    <button class="button-submit">Logout</button>
+                                </form>
+                            </div>
+                            {%else%}
+                            <div>
+                                <div>
+                                    <a onclick="hide_profile()">Login/Signup</a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" style="z-index: -1; display: none;" id="viewProfile">
+                                <form method="post" action="{{url_for('login')}}?next=%2F{{ request.url }}%2f">
+                                    <h2>Sign in</h2>
+                                    <table align="center">
+                                        <tr>
+                                            <td>
+                                                <b><label>Email</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="email" name="email" class="text-fields" placeholder="Email" required autofocus>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b><label>Password</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" class="text-fields" placeholder="Password" required autofocus>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {% if error %}
+                                        <h3>error</h3>
+                                    {% endif %}
+                                    <br>
+                                    <a style="font-size: 0.8em; background-color: white; color: black;" href="{{url_for('register')}}">To create an account click here</a>
+                                    <br>
+                                    <button type="submit" class="button-submit">Sign in</button>
+                                </form>
+                            </div>
+                            {%endif%}
+                        </li>
+                        <li><a href="{{ url_for('search') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="floating-rect card-5">
+            <div class="corner-ribbon top-left card-5">Search</div>
+            <br>
+            <br>
+            <br>
+            <input class="text-fields-search card-5" type="text" name="search term" id="search_term" required/>
+            <br>
+            <br>
+            <button type="submit" class="button-submit" onclick="search_dataset()">Search Datasets</button><button type="submit" class="button-submit" onclick="search_learning()">Search Learning</button>
+            <div id="search_results">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="floating-rect card-5">
+            <div class="corner-ribbon top-left card-5">Dataset categories</div>
+            <br>
+            <br>
+            <br>
+            <div class="container1">
+                <h3 class="title">Transportation</h3>
+                <div class="content card-5">
+                    <a onclick="pop_up(this)" value="transportation" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="https://www.yeastar.com/wp-content/uploads/2017/02/transport-voip-solution-1.jpg">
+                        <div class="content-details fadeIn-top">
+                            <p>Get all datasets releated to transportation</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container1">
+                <h3 class="title">Population</h3>
+                <div class="content card-5">
+                    <a onclick="pop_up(this)" value="population" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="https://aifs.gov.au/sites/default/files/styles/front_page_slider/public/images/page/population-and-household_0.jpg?itok=BeOHG89R">
+                        <div class="content-details fadeIn-top">
+                            <p>Get all datasets releated to population</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container1">
+                <h3 class="title">Weather</h3>
+                <div class="content card-5">
+                    <a onclick="pop_up(this)" value="weather" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="https://wi-images.condecdn.net/image/doEYpG6Xd87/crop/1440/f/weather.jpg">
+                        <div class="content-details fadeIn-top">
+                            <p>Get all datasets releated to weather</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container1">
+                <h3 class="title">Education</h3>
+                <div class="content card-5">
+                    <a onclick="pop_up(this)" value="education" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fdam%2Fimageserve%2F1163476986%2F960x0.jpg%3Ffit%3Dscale">
+                        <div class="content-details fadeIn-top">
+                            <p>Get all datasets releated to education</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="container1">
+                <h3 class="title">Social</h3>
+                <div class="content card-5">
+                    <a onclick="pop_up(this)" value="social" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="https://marketingweek.imgix.net/content/uploads/2017/02/21170348/social-insight-speech_750.jpg?auto=compress,format&q=60&w=750&h=">
+                        <div class="content-details fadeIn-top">
+                            <p>Get all datasets releated to social</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="floating-rect card-5">
+            <div class="corner-ribbon top-left card-5">Learning Activities</div>
+            <br>
+            <br>
+            <br>
+            <div style="display: flex inline-block;">
+                <button style="background-color: gray;" id = 'b' onclick="show_activity(this, 'Intermediate', 'Advance', 'i', 'a')" style="order: 0;" value="beginner">Beginner</button>
+                <button id = 'i'onclick="show_activity(this, 'beginner', 'Advance', 'b', 'a')" style="order: 1;" value="Intermediate">Intermediate</button>
+                <button id = 'a' onclick="show_activity(this, 'beginner', 'Intermediate', 'b', 'i')" style="order: 2;" value="Advance">Advance</button>
+            </div>
+            <div id="beginner" class="container">
+                <table id="activity" class="table-score striped">
+                    <thead>
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>link to the activity</th>
+                        </tr>
+                    </thead>
+                    {% for vals in learning[0] %}
+                        <tr>
+                            <th>
+                                {{vals[1]}}
+                            </th>
+                            <th>
+                               <a href = '/learning/{{vals[0]}}'>View activity</a>
+                           </th>
+                       </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div style="display: none;" id="Intermediate" class="container">
+                <table id="activity" class="table-score striped">
+                    <thead>
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>link to the activity</th>
+                        </tr>
+                    </thead>
+                    {% for vals in learning[1] %}
+                        <tr>
+                            <th>
+                                {{vals[1]}}
+                            </th>
+                            <th>
+                               <a href = '/learning/{{vals[0]}}'>View activity</a>
+                           </th>
+                       </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div style="display: none;" id="Advance" class="container">
+                <table id="activity" class="table-score striped">
+                    <thead>
+                        <tr>
+                            <th>Activity Name</th>
+                            <th>link to the activity</th>
+                        </tr>
+                    </thead>
+                    {% for vals in learning[2] %}
+                        <tr>
+                            <th>
+                                {{vals[1]}}
+                            </th>
+                            <th>
+                               <a href = '/learning/{{vals[0]}}'>View activity</a>
+                           </th>
+                       </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="floating-rect card-5">
+            <div class="corner-ribbon top-left card-5">Learning Leaderboards</div>
+            <br>
+            <br>
+            <br>
+            <div class="container">
+                <table id="socreboard" class="table-score striped">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Username</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="chat_box">
+            <div id="chat_body" style="background-color: #e8e8e8; display: none; padding:0; float:center; visibility: hidden; width: 80%; height:0%;" class="floating-rect card-5">
+                <nav class="navbar" style="border-radius: 10px; border-bottom-right-radius: 0px; border-bottom-left-radius : 0px; float: center; position: fixed; width: 24%; margin-top: 0; background-color: #438bde; background-image: none;">
+                    <div class="container">
+                        <h4 style="margin-top: 4%">Learning bot</h4>
+                    </div>
+                </nav>
+                <iframe class="content_viewport" style="margin-top: 25%; border : none;" width="100%" height="80%" src="{{ url_for('livechat') }}"></iframe>
+            </div>
+            <div id="chat_button">
+                <button onclick="hide_chat()" style="float:right; margin-right: 30px; margin-bottom: 30px; background-color: black; " class="chat"><img style="vertical-align:middle" src="/extra/img/chat.png" height="50px" width="50px"></button>
+            </div>
+        </div>
+    </section>
+    <div style="filter: blur(0px);" class="PanelFloat floating-rect card-5" id="display_contents">
+    </div>
+</body>

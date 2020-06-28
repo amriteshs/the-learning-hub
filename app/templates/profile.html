@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+    <link rel="stylesheet" href="/extra/css/profile.css">
+    <script src="/extra/js/profile.js"></script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<body onload=init()>
+    <nav class="navbar">
+        <div style="display: flex;
+  justify-content: space-between;">
+            <div style="margin-left: 1%">
+            <h1><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+            </div>
+            <div style="margin-right: 1%;  margin-top: 1.2%; vertical-align: middle;">
+                <div>
+                    <ul class="nav nav-right">
+                        <li>
+                            <div>
+                                <div>
+                                    {% if message %}
+                                    <a onclick="hide_profile()">
+                                        <img style="vertical-align:middle" src="/extra/img/user-button.png" height="40px" width="40px">
+                                        {{message[0]}} {{message[1]}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" id="viewProfile">
+                                <form action="{{url_for('view_profile')}}">
+                                    <button class="button-submit"> View profile </button>
+                                </form>
+                                <form action="{{url_for('logout')}}">
+                                    <button class="button-submit">Logout</button>
+                                </form>
+                            </div>
+                            {%else%}
+                            <div>
+                                <div>
+                                    <a onclick="hide_profile()">Login/Signup</a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" id="viewProfile">
+                                <form method="post" action="{{url_for('login')}}?next=%2F{{ request.url }}%2f">
+                                    <h2>Sign in</h2>
+                                    <table align="center">
+                                        <tr>
+                                            <td>
+                                                <b><label>Email</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="email" name="email" class="text-fields" placeholder="Email" required autofocus>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b><label>Password</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" class="text-fields" placeholder="Password" required autofocus>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {% if error %}
+                                        <h3>error</h3>
+                                    {% endif %}
+                                    <br>
+                                    <a style="font-size: 0.8em; background-color: white; color: black;" href="{{url_for('register')}}">To create an account click here</a>
+                                    <br>
+                                    <button type="submit" class="button-submit">Sign in</button>
+                                </form>
+                            </div>
+                            {%endif%}
+                        </li>
+                        <li><a href="{{ url_for('search') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div style="margin:80px 0 0 70px" class="floating-rect card-5">
+        <img src="/extra/img/user-button.png" class="avatar card-5" alt="">
+        <br>
+        <br>
+        <table id="table_profile">
+            <tr>
+                <th>name</th>
+                <td>{{message[0]}} {{message[1]}}</td>
+            </tr>
+            <tr>
+                <th>email</th>
+                <td>{{message[2]}}</td>
+            </tr>
+            <tr>
+                <th class="styled-select">score for <select id="selector" onchange=getIndex()></select></th>
+                <td>
+                    <p id="demo"></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+</body>

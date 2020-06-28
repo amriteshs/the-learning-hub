@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="/extra/js/dataset.js"></script>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,latin-ext">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/extra/css/dataset.css">
+</head>
+<title>Dataset</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<body>
+    <nav class="navbar1">
+        <div style="display: flex;
+  justify-content: space-between;">
+            <div style="vertical-align: middle; margin-left: 1%">
+            <h1><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+            </div>
+            <div style="margin-right: 1%;  margin-top: 1%; vertical-align: middle;">
+                <div>
+                    <ul class="nav1 nav-right1">
+                        <li>
+                            <div>
+                                <div>
+                                    {% if message %}
+                                    <a onclick="hide_profile()">
+                                        <img style="vertical-align:middle" src="/extra/img/user-button.png" height="40px" width="40px">
+                                        {{message[0]}} {{message[1]}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" style="z-index: -1; display: none;" id="viewProfile">
+                                <form action="{{url_for('view_profile')}}">
+                                    <button class="button-submit"> View profile </button>
+                                </form>
+                                <form action="{{url_for('logout')}}">
+                                    <button class="button-submit">Logout</button>
+                                </form>
+                            </div>
+                            {%else%}
+                            <div>
+                                <div>
+                                    <a onclick="hide_profile()">Login/Signup</a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" style="z-index: -1; display: none;" id="viewProfile">
+                                <form method="post" action="{{url_for('login')}}?next=%2F{{ request.url }}%2f">
+                                    <h2>Sign in</h2>
+                                    <table cellspacing="3em" align="center">
+                                        <tr>
+                                            <td>
+                                                <b><label>Email</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="email" name="email" class="text-fields" placeholder="Email" required autofocus>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b><label>Password</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" class="text-fields" placeholder="Password" required autofocus>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {% if error %}
+                                        <h3>error</h3>
+                                    {% endif %}
+                                    <br>
+                                    <a style="font-size: 0.8em; background-color: white; color: black;" href="{{url_for('register')}}">To create an account click here</a>
+                                    <br>
+                                    <button type="submit" class="button-submit">Sign in</button>
+                                </form>
+                            </div>
+                            {%endif%}
+                        </li>
+                        <li><a href="{{ url_for('search') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="floating-rect card-5">
+        <div class="corner-ribbon top-left card-5">Dataset Visualisation</div>
+        <br>
+        <br>
+        <br>
+        {% if dataset_details %}
+        <button class="floating-rect-heading no-click" style="background-color: black;"> {{dataset_details[3]}} {%if dataset_details[14] == '1'%}<span class="withborder-aproved"> APPROVED </span>{%else%}<span class="withborder-unaproved"> NOT APPROVED </span>{%endif%}</button>
+        <br>
+        <iframe style="border: none;" src="{{dataset_details[13]}}" width="90%" height="60%"></iframe>
+        <a onclick="upload_vote('pos');"><i class="fa fa-thumbs-up color-up fa-5x"></i>
+            <spam style="color: #0da100;" id="up-votes"></spam>
+        </a> <a onclick="upload_vote('neg');"><i class="fa fa-thumbs-down color-down fa-5x"></i>
+            <spam style="color: #ff1100;" id="down-votes"></spam>
+        </a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="floating-rect card-5">
+        <div class="corner-ribbon top-left card-5">Dataset Details</div>
+        <br>
+        <br>
+        <br>
+        <table id="table-booking">
+            <tr>
+                <th>Details</th>
+                <td>{{dataset_details[4]}}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{dataset_details[2]}}</td>
+            </tr>
+            <tr>
+                <th>Dataset owner</th>
+                <td>{{dataset_details[5]}}</td>
+            </tr>
+            <tr>
+                <th>Uploader</th>
+                <td>{{dataset_details[6]}}</td>
+            </tr>
+            <tr>
+                <th>Last update</th>
+                <td>{{dataset_details[7]}}</td>
+            </tr>
+            <tr>
+                <th>Link to API</th>
+                <td><a href="{{dataset_details[8]}}">{{dataset_details[8]}}</a></td>
+            </tr>
+            <tr>
+                <th>File format</th>
+                <td>{{dataset_details[11]}}</td>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+    <br><br><br><br>
+    <div class="floating-rect card-5" style="max-width: 90%;font-size: large;">
+        <div class="corner-ribbon top-left card-5">Comments</div>
+        <br>
+        <br>
+        <br>
+        <div class="panel-body">
+            {% for n in comments %}
+            <hr>
+            <ul class="media-list">
+                <li class="media">
+                    <div class="media-body">
+                        <span style='float: left;' class="text-muted pull-right">
+                            <large style='float: left;' class="text-muted">{{n[3]}}</large>
+                        </span>
+                        <strong style='float: left;' class="text-success">{{n[0]}} {{n[1]}}</strong>
+                        <p style='float: left; margin-top: 20px;'>
+                            {{n[2]}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            <hr>
+            {% endfor %}
+        </div>
+        <form action="" method="post">
+            <div>
+                {{ form.name(class="form-control",placeholder="Write a comment...",rows="20") }}
+                <br>
+            </div>
+            <div class="input submit">
+                <button type="submit" class="btn btn-info btn-lg pull-left">Post</button>
+            </div>
+        </form>
+    </div>
+    <div class="chat_box">
+        <div id="chat_body" style="background-color: #e8e8e8; display: none; padding:0; float:center; visibility: hidden; width: 80%; height:0%;" class="floating-rect card-5">
+            <nav class="navbar card-5" style="border-radius: 10px; border-bottom-right-radius: 0px; border-bottom-left-radius : 0px; float: center; position: fixed; width: 24%; margin-top: 0; background-color: #438bde; background-image: none;">
+                <div class="container1">
+                    <h4 style="margin-top: 4%">Learning bot</h4>
+                </div>
+            </nav>
+            <iframe class="content_viewport" style="margin-top: 25%; border : none;" width="100%" height="80%" src="{{ url_for('livechat') }}"></iframe>
+        </div>
+        <div id="chat_button">
+            <button onclick="hide_chat()" style="float:right; margin-right: 30px; margin-bottom: 30px; background-color: black; " class="chat"><img style="vertical-align:middle" src="/extra/img/chat.png" height="50px" width="50px"></button>
+        </div>
+    </div>
+    </div>
+</body>

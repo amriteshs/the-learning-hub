@@ -1,0 +1,9 @@
+0	Support Vector Machines are based on the concept of decision planes that define decision boundaries. Which technique used to identify the right hyperplances	Kernels	Kernels, CHAID, Both of above, None of the Above
+1	Which one is NOT used as a Kernel in Support Vector Machine Modeling	AUC	Radial Basis Function(RBF), Polynomial, Sigmoid,	 AUC
+2	The effectiveness of an SVM depends upon:	All of the above	Selection of Kernel, Kernel Parameters, Soft Margin Parameter C, All of the above
+3	Support vectors are the data points that lie closest to the decision surface.	TRUE	TRUE, FALSE
+4	The SVM’s are less effective when:	The data is noisy and contains overlapping points	The data is linearly separable; The data is clean and ready to use, The data is noisy and contains overlapping points
+5	Suppose you are using RBF kernel in SVM with high Gamma value. What does this signify?	The model would consider only the points close to the hyperplane for modelling	The model would consider even far away points from hyperplane for modeling, The model would consider only the points close to the hyperplane for modelling, The model would not be affected by distance of points from hyperplane for modeling, None of the above
+6	The cost parameter in the SVM means:	The tradeoff between misclassification and simplicity of the model	The number of cross-validations to be made, The kernel to be used, The tradeoff between misclassification and simplicity of the model, None of the above
+7	Which of the following are real world applications of the SVM?	All of the above	Text and Hypertext Categorization, Image Classification, Clustering of News Articles, All of the above
+8	What do you mean by generalization error in terms of the SVM?	How accurately the SVM can predict outcomes for unseen data	How far the hyperplane is from the support vectors, How accurately the SVM can predict outcomes for unseen data, The threshold amount of error in an SVM

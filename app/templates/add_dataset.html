@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <title>add dataset</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/extra/css/add_dataset.css">
+    <script src="/extra/js/add_dataset.js"></script>
+</head>
+<script>
+</script>
+
+<body>
+    <section id="blur">
+        <nav class="navbar">
+        <div style="display: flex;
+  justify-content: space-between;">
+            <div style="margin-left: 1%">
+            <h1><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+            </div>
+            <div style="margin-right: 1%;  margin-top: 1.2%; vertical-align: middle;">
+                <div>
+                    <ul class="nav nav-right">
+                        <li>
+                            <div>
+                                <div>
+                                    {% if message %}
+                                    <a onclick="hide_profile()">
+                                        <img style="vertical-align:middle" src="/extra/img/user-button.png" height="40px" width="40px">
+                                        {{message[0]}} {{message[1]}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" style="z-index: -1; display: none; position: fixed;" id="viewProfile">
+                                <form action="{{url_for('view_profile')}}">
+                                    <button class="button-submit"> View profile </button>
+                                </form>
+                                <form action="{{url_for('logout')}}">
+                                    <button class="button-submit">Logout</button>
+                                </form>
+                            </div>
+                            {%else%}
+                            <div>
+                                <div>
+                                    <a onclick="hide_profile()">Login/Signup</a>
+                                </div>
+                            </div>
+                            <div class="floating-rect-view-profile" style="z-index: -1; display: none; position: fixed;" id="viewProfile">
+                                <form method="post" action="{{url_for('login')}}?next=%2F{{ request.url }}%2f">
+                                    <h2>Sign in</h2>
+                                    <table align="center">
+                                        <tr>
+                                            <td>
+                                                <b><label>Email</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="email" name="email" class="text-fields" placeholder="Email" required autofocus>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b><label>Password</label></b>
+                                            </td>
+                                            <td>
+                                                <input type="password" name="password" class="text-fields" placeholder="Password" required autofocus>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <a style="font-size: 0.8em; background-color: white; color: black;" href="{{url_for('register')}}">To create an account click here</a>
+                                    <br>
+                                    <button type="submit" class="button-submit">Sign in</button>
+                                </form>
+                            </div>
+                            {%endif%}
+                        </li>
+                        <li><a href="{{ url_for('search') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div align="center">
+            <div class="floating-rect card-5">
+                <div id="myButton2" class="corner-ribbon card-5">Add Dataset Details</div>
+                {%if status %}
+                <h4>{{status}}</h4>
+                {% endif %}
+                {%if error %}
+                <h4 style="color: red;">{{error}}</h4>
+                {% endif %}
+                <br>
+                <br>
+                <br>
+                <form method="post">
+                    <table id="table-booking">
+                        <tr>
+                            <td>dataset name<sup style="color: red; font-size: 1em">*</sup></td>
+                            <td><input minlength="6" class="text-fields-real" type="text" name="name" required/></td>
+                        </tr>
+                        <tr>
+                            <td>dataset description<sup style="color: red; font-size: 1em">*</sup></td>
+                            <td><input minlength="10" class="text-fields-real" type="text" name="discription" required/></td>
+                        </tr>
+                        <tr>
+                            <td>category<sup style="color: red; font-size: 1em">*</sup></td>
+                            <td>
+                                <select class="text-fields-real" name="category">
+                                    {% for n in category_list %}
+                                    <option value="{{n[0]}}">{{n[0]}}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>dataset owner<sup style="color: red; font-size: 1em">*</sup></td>
+                            <td><input minlength="5" class="text-fields-real" type="text" name="owner" required/></td>
+                        </tr>
+                        <tr>
+                            <td>last update </td>
+                            <td><input class="text-fields-real" type="text" name="update"></td>
+                        </tr>
+                        <tr>
+                            <td>Link to api</td>
+                            <td><input class="text-fields-real" type="text" name="api"></td>
+                        </tr>
+                        <tr>
+                            <td>Search tags</td>
+                            <td><input class="text-fields-real" type="text" name="search_tags"></td>
+                        </tr>
+                        <tr>
+                            <td>learning tags</td>
+                            <td><input class="text-fields-real" type="text" name="learning_tags"></td>
+                        </tr>
+                        <tr>
+                            <td>File format<sup style="color: red; font-size: 1em">*</sup></td>
+                            <td><input class="text-fields-real" type="text" name="format" required/></td>
+                        </tr>
+                        <tr>
+                            <td>visualisation link<sup style="color: red; font-size: 1em">*</sup></td>
+                            <td><input class="text-fields-real" type="text" name="link" required/></td>
+                        </tr>
+                    </table>
+                    <button class='button-submit' type="submit" name="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+</body>

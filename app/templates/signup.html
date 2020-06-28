@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Signup page</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="/extra/css/signup.css">
+</head>
+
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+            <div style="float: right; margin-right : 35px;">
+                <div>
+                    <ul class="nav nav-right">
+                        <li><a href="{{ url_for('search') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <br>
+    <div class="parent">
+        <div align="center" class="floating-rect">
+            <form method="post" name="submit">
+                <span class="error-alert">
+                    <label>
+                        {% if error: %}
+                        {{error}}
+                        <br>
+                        <a class="error-alert" href="{{ url_for('login') }}"> click here to sign in</a>
+                        {% endif %}
+                    </label>
+                </span>
+                <table align="center">
+                    <tr>
+                        <td>
+                            <label>First Name</label>
+                        </td>
+                        <td>
+                            <input type="text" minlength="4" name="first_name" placeholder="First Name" required autofocus class="text-fields">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Last Name</label>
+                        </td>
+                        <td>
+                            <input type="text" minlength="4" name="last_name" placeholder="Last Name" required autofocus class="text-fields">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Email address</label>
+                        </td>
+                        <td>
+                            <input type="email" name="email" placeholder="Email address" required autofocus class="text-fields">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Password</label>
+                        </td>
+                        <td>
+                            <input type="password" minlength="6"name="password" placeholder="Password" required class="text-fields"><br>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" class="button-submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="parent">
+        <div class="floating-rect">
+            Already have an account? <a href="{{ url_for('login') }}"> Click here to sign in
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

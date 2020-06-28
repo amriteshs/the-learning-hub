@@ -1,0 +1,851 @@
+{
+  "definitions": {
+    "approved_dataset_reply": {
+      "properties": {
+        "dataset_id": {
+          "type": "string"
+        }, 
+        "downvote": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }, 
+        "upvote": {
+          "type": "string"
+        }
+      }
+    }, 
+    "dataset_reply": {
+      "properties": {
+        "category": {
+          "type": "string"
+        }, 
+        "catogery_id": {
+          "type": "string"
+        }, 
+        "dataset_id": {
+          "type": "string"
+        }, 
+        "dataset_owner": {
+          "type": "string"
+        }, 
+        "discription": {
+          "type": "string"
+        }, 
+        "file_format": {
+          "type": "string"
+        }, 
+        "file_patch": {
+          "type": "string"
+        }, 
+        "last_update": {
+          "type": "string"
+        }, 
+        "learning_tags": {
+          "type": "string"
+        }, 
+        "link_to_api": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }, 
+        "search_tags": {
+          "type": "string"
+        }, 
+        "status": {
+          "type": "string"
+        }, 
+        "uploader": {
+          "type": "string"
+        }, 
+        "visualisation_link": {
+          "type": "string"
+        }
+      }
+    }, 
+    "get_score_reply": {
+      "properties": {
+        "learning_name": {
+          "type": "integer"
+        }
+      }
+    }, 
+    "get_votes_reply": {
+      "properties": {
+        "downvote": {
+          "type": "integer"
+        }, 
+        "upvote": {
+          "type": "integer"
+        }
+      }
+    }, 
+    "leader_boards_reply": {
+      "properties": {
+        "comment_desc": {
+          "type": "string"
+        }, 
+        "first_name": {
+          "type": "string"
+        }, 
+        "last_name": {
+          "type": "string"
+        }, 
+        "rating": {
+          "type": "string"
+        }, 
+        "time_stamp": {
+          "type": "object"
+        }
+      }
+    }, 
+    "learning_content_reply": {
+      "properties": {
+        "description": {
+          "type": "string"
+        }, 
+        "learning_id": {
+          "type": "string"
+        }, 
+        "link_to_video": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }, 
+        "skill_level": {
+          "type": "string"
+        }, 
+        "tags": {
+          "type": "string"
+        }, 
+        "topic": {
+          "type": "string"
+        }, 
+        "topic_id": {
+          "type": "string"
+        }
+      }
+    }, 
+    "learning_search_reply": {
+      "properties": {
+        "description": {
+          "type": "string"
+        }, 
+        "id": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }
+      }
+    }, 
+    "livechat_response": {
+      "properties": {
+        "is_link": {
+          "type": "integer"
+        }, 
+        "name": {
+          "type": "string"
+        }, 
+        "options": {
+          "type": "array"
+        }, 
+        "reply": {
+          "type": "string"
+        }, 
+        "type": {
+          "type": "string"
+        }
+      }
+    }, 
+    "question_reply": {
+      "properties": {
+        "answer": {
+          "type": "string"
+        }, 
+        "learning_id": {
+          "type": "string"
+        }, 
+        "number_question": {
+          "type": "integer"
+        }, 
+        "options": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array"
+        }, 
+        "question": {
+          "type": "string"
+        }, 
+        "question_id": {
+          "type": "string"
+        }
+      }
+    }, 
+    "search_dataset_reply": {
+      "properties": {
+        "category": {
+          "type": "string"
+        }, 
+        "catogery_id": {
+          "type": "string"
+        }, 
+        "dataset_id": {
+          "type": "string"
+        }, 
+        "dataset_owner": {
+          "type": "string"
+        }, 
+        "discription": {
+          "type": "string"
+        }, 
+        "file_format": {
+          "type": "string"
+        }, 
+        "file_patch": {
+          "type": "string"
+        }, 
+        "last_update": {
+          "type": "string"
+        }, 
+        "learning_tags": {
+          "type": "string"
+        }, 
+        "link_to_api": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }, 
+        "search_tags": {
+          "type": "string"
+        }, 
+        "status": {
+          "type": "string"
+        }, 
+        "uploader": {
+          "type": "string"
+        }, 
+        "visualisation_link": {
+          "type": "string"
+        }
+      }
+    }, 
+    "unapproved_dataset_reply": {
+      "properties": {
+        "category": {
+          "type": "string"
+        }, 
+        "catogery_id": {
+          "type": "string"
+        }, 
+        "dataset_id": {
+          "type": "string"
+        }, 
+        "dataset_owner": {
+          "type": "string"
+        }, 
+        "discription": {
+          "type": "string"
+        }, 
+        "file_format": {
+          "type": "string"
+        }, 
+        "file_patch": {
+          "type": "string"
+        }, 
+        "last_update": {
+          "type": "string"
+        }, 
+        "learning_tags": {
+          "type": "string"
+        }, 
+        "link_to_api": {
+          "type": "string"
+        }, 
+        "name": {
+          "type": "string"
+        }, 
+        "search_tags": {
+          "type": "string"
+        }, 
+        "status": {
+          "type": "string"
+        }, 
+        "uploader": {
+          "type": "string"
+        }, 
+        "visualisation_link": {
+          "type": "string"
+        }
+      }
+    }, 
+    "upload_score_reply": {
+      "properties": {
+        "status": {
+          "default": [
+            "success", 
+            "fail"
+          ], 
+          "type": "string"
+        }
+      }
+    }, 
+    "user_reply": {
+      "properties": {
+        "email": {
+          "type": "string"
+        }, 
+        "first_name": {
+          "type": "string"
+        }, 
+        "last_name": {
+          "type": "string"
+        }, 
+        "user_id": {
+          "type": "integer"
+        }
+      }
+    }
+  }, 
+  "info": {
+    "description": "", 
+    "title": "The Learning Hub API"
+  }, 
+  "paths": {
+    "/add_votes": {
+      "post": {
+        "description": "Call this api to get votes<br/>", 
+        "parameters": [
+          {
+            "description": "The dataset ID", 
+            "in": "body", 
+            "name": "id", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "downvote": {
+                  "type": "string"
+                }, 
+                "id": {
+                  "type": "integer"
+                }, 
+                "upvote": {
+                  "type": "string"
+                }
+              }
+            }, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success"
+          }, 
+          "400": {
+            "description": "fail"
+          }
+        }, 
+        "summary": "This is the get votes API", 
+        "tags": [
+          "API to get votes"
+        ]
+      }
+    }, 
+    "/approve_dataset": {
+      "post": {
+        "description": "Call this api to approve dataset<br/>", 
+        "parameters": [
+          {
+            "description": "The approve data", 
+            "in": "body", 
+            "name": "data", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "action": {
+                  "default": "approve", 
+                  "type": "string"
+                }, 
+                "id": {
+                  "type": "integer"
+                }
+              }
+            }, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success"
+          }, 
+          "400": {
+            "description": "fail"
+          }
+        }, 
+        "summary": "This is the approve dataset API", 
+        "tags": [
+          "API to approve dataset"
+        ]
+      }
+    }, 
+    "/approved_dataset": {
+      "get": {
+        "description": "Call this api to get approved dataset<br/>", 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/approved_dataset_reply"
+            }
+          }, 
+          "400": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the get approved dataset API", 
+        "tags": [
+          "API to get approved dataset"
+        ]
+      }
+    }, 
+    "/comments/{id}": {
+      "get": {
+        "description": "Call this api to get or post comments<br/>", 
+        "parameters": [
+          {
+            "description": "The data ID", 
+            "in": "path", 
+            "name": "data_id", 
+            "required": true, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/leader_boards_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the comments API", 
+        "tags": [
+          "API to get or post comments"
+        ]
+      }, 
+      "post": {
+        "description": "Call this api to get or post comments<br/>", 
+        "parameters": [
+          {
+            "description": "The data ID", 
+            "in": "path", 
+            "name": "data_id", 
+            "required": true, 
+            "type": "string"
+          }, 
+          {
+            "description": "The comment desc", 
+            "in": "body", 
+            "name": "name", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/leader_boards_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the comments API", 
+        "tags": [
+          "API to get or post comments"
+        ]
+      }
+    }, 
+    "/dataset_API/{id}": {
+      "get": {
+        "description": "Call this api passing a dataset id and get back its content<br/>", 
+        "parameters": [
+          {
+            "description": "The dataset ID", 
+            "in": "path", 
+            "name": "id", 
+            "required": true, 
+            "type": "integer"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/dataset_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the get dataset API", 
+        "tags": [
+          "API to get dataset"
+        ]
+      }
+    }, 
+    "/get_score": {
+      "get": {
+        "description": "Call this api to get a score<br/>", 
+        "parameters": [
+          {
+            "description": "The activity ID", 
+            "in": "path", 
+            "name": "activity_id", 
+            "required": true, 
+            "type": "integer"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/get_score_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the get score API", 
+        "tags": [
+          "API to get score"
+        ]
+      }
+    }, 
+    "/get_votes/{id}": {
+      "get": {
+        "description": "Call this api to get votes<br/>", 
+        "parameters": [
+          {
+            "description": "The dataset ID", 
+            "in": "path", 
+            "name": "id", 
+            "required": true, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success", 
+            "schema": {
+              "$ref": "#/definitions/get_votes_reply"
+            }
+          }, 
+          "400": {
+            "description": "fail"
+          }
+        }, 
+        "summary": "This is the get votes API", 
+        "tags": [
+          "API to get votes"
+        ]
+      }
+    }, 
+    "/leader_boards": {
+      "get": {
+        "description": "Call this api to get leader boards<br/>", 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/leader_boards_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the leader boards API", 
+        "tags": [
+          "API to get leader boards"
+        ]
+      }
+    }, 
+    "/learning_API/{learning_id}": {
+      "get": {
+        "description": "Call this api passing a learning id and get back its content<br/>", 
+        "parameters": [
+          {
+            "description": "The learning ID", 
+            "in": "path", 
+            "name": "learning_id", 
+            "required": true, 
+            "type": "integer"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/learning_content_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the get learning content API", 
+        "tags": [
+          "API to get learning content"
+        ]
+      }
+    }, 
+    "/livechat_back": {
+      "post": {
+        "description": "Call this api to get livechat response<br/>", 
+        "parameters": [
+          {
+            "description": "The message", 
+            "in": "body", 
+            "name": "message", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success", 
+            "schema": {
+              "$ref": "#/definitions/livechat_response"
+            }
+          }, 
+          "400": {
+            "description": "fail"
+          }
+        }, 
+        "summary": "This is the livechat API", 
+        "tags": [
+          "API to get livechat response"
+        ]
+      }
+    }, 
+    "/questions": {
+      "post": {
+        "description": "Call this api to get question set<br/>", 
+        "parameters": [
+          {
+            "description": "The reply", 
+            "in": "body", 
+            "name": "reply", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "answer": {
+                  "type": "string"
+                }, 
+                "init": {
+                  "type": "integer"
+                }, 
+                "learning_id": {
+                  "type": "integer"
+                }, 
+                "options": {
+                  "type": "string"
+                }, 
+                "question": {
+                  "type": "string"
+                }, 
+                "question_id": {
+                  "type": "integer"
+                }
+              }
+            }, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success", 
+            "schema": {
+              "$ref": "#/definitions/question_reply"
+            }
+          }, 
+          "400": {
+            "description": "fail"
+          }
+        }, 
+        "summary": "This is the question set API", 
+        "tags": [
+          "API to get question set"
+        ]
+      }
+    }, 
+    "/search_dataset/{search_term}": {
+      "get": {
+        "description": "Call this api to search dataset<br/>", 
+        "parameters": [
+          {
+            "description": "The search term", 
+            "in": "path", 
+            "name": "search_term", 
+            "required": true, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success", 
+            "schema": {
+              "$ref": "#/definitions/search_dataset_reply"
+            }
+          }, 
+          "400": {
+            "description": "fail"
+          }, 
+          "500": {
+            "description": null
+          }
+        }, 
+        "summary": "This is the search dataset API", 
+        "tags": [
+          "API to search dataset"
+        ]
+      }
+    }, 
+    "/search_learning_activity/{search_term}": {
+      "get": {
+        "description": "Call this api passing a search term and get back its result<br/>", 
+        "parameters": [
+          {
+            "description": "The search term", 
+            "in": "path", 
+            "name": "search_term", 
+            "required": true, 
+            "type": "string"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/learning_search_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the search learning activity content API", 
+        "tags": [
+          "API to search learning activity"
+        ]
+      }
+    }, 
+    "/unapproved_dataset": {
+      "get": {
+        "description": "Call this api to get unapproved dataset<br/>", 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/unapproved_dataset_reply"
+            }
+          }, 
+          "400": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the get unapproved dataset API", 
+        "tags": [
+          "API to get unapproved dataset"
+        ]
+      }
+    }, 
+    "/upload_score": {
+      "post": {
+        "description": "Call this api to upload score<br/>", 
+        "parameters": [
+          {
+            "description": "The activity ID", 
+            "in": "body", 
+            "name": "activity_id", 
+            "required": true, 
+            "schema": {
+              "properties": {
+                "activity_id": {
+                  "type": "integer"
+                }, 
+                "score": {
+                  "type": "integer"
+                }
+              }
+            }, 
+            "type": "integer"
+          }
+        ], 
+        "responses": {
+          "200": {
+            "description": "success", 
+            "schema": {
+              "$ref": "#/definitions/upload_score_reply"
+            }
+          }, 
+          "400": {
+            "description": "fail"
+          }
+        }, 
+        "summary": "This is the upload score API", 
+        "tags": [
+          "API to upload score"
+        ]
+      }
+    }, 
+    "/user": {
+      "post": {
+        "description": "Call this api to get user information<br/>", 
+        "responses": {
+          "200": {
+            "description": "Success", 
+            "schema": {
+              "$ref": "#/definitions/user_reply"
+            }
+          }, 
+          "500": {
+            "description": "Error"
+          }
+        }, 
+        "summary": "This is the get user API", 
+        "tags": [
+          "API to get user information"
+        ]
+      }
+    }
+  }, 
+  "swagger": "2.0"
+}

@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Login Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/extra/js/admin_console.js"></script>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="/extra/css/admin_console.css">
+</head>
+
+<body onload="load_data()">
+    <section id="blur">
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo"><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+                <div style="float: right; margin-right : 35px;">
+                    <div>
+                        <ul class="nav nav-right">
+                            <li><a href="{{ url_for('search') }}">Home</a></li>
+                            <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                            <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+        <br>
+        <br>
+        <button style="vertical-align: center; float: center; background-color: black" id="myButton2" class="floating-rect-button">Unapproved datasets</button>
+        <br>
+        <br>
+        </div>
+        <div id="unaproved_view">
+        </div>
+        <br>
+        <br>
+        <button style="vertical-align: center; float: center; background-color: black" id="myButton1" class="floating-rect-button">Approved datasets</button>
+        <br>
+        <br>
+        <div id="aproved_view">
+        </div>
+    </section>
+    <div style="filter: blur(0px);" class="PanelFloat floating-rect card-5" id="display_contents">
+    </div>
+</body>

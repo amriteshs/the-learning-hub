@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>login page</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/3.0.2/normalize.css">
+    <link rel="stylesheet" href="/extra/css/login.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo"><a href="{{url_for('search')}}">The Learning Hub</a></h1>
+            <div style="float: right; margin-right : 35px;">
+                <div>
+                    <ul class="nav nav-right">
+                        <li><a href="{{ url_for('search') }}">Home</a></li>
+                        <li><a href="{{ url_for('add_dataset') }}">Add dataset</a></li>
+                        <li><a href="{{ url_for('admin') }}">Admin</a></li>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div class="parent">
+        <div class="floating-rect">
+            <form method="post">
+                <h2>Sign in</h2>
+                <label class="error-alert">
+                    {%if error:%}
+                    {{error}}
+                    <br>
+                    <a class="error-alert" href="{{ url_for('register') }}"> click here to create account</a>
+                    {% endif %}
+                </label>
+                <table align="center">
+                    <tr>
+                        <td>
+                            <b><label>Email</label></b>
+                        </td>
+                        <td>
+                            <input type="text" name="email" class="text-fields" placeholder="Email" required autofocus>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b><label>Password</label></b>
+                        </td>
+                        <td>
+                            <input type="password" name="password" class="text-fields" placeholder="Password" required autofocus>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" class="button-submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <div class="parent">
+        <div class="floating-rect">
+            New here? <a href="{{ url_for('register') }}"> Click here to create account
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="/extra/css/admin_login.css">
+</head>
+
+
+<body class="back-ground">
+    <div class="parent">
+        <div class="floating-rect">
+            <form method="post">
+                <h2>Admin Sign in</h2>
+                <label class="error-alert">
+                    {%if error:%}
+                    {{error}}
+                    {% endif %}
+                </label>
+                <table align="center">
+                    <tr>
+                        <td>
+                            <b><label>Email</label></b>
+                        </td>
+                        <td>
+                            <input type="email" name="email" class="text-fields" placeholder="Email" required autofocus>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <b><label>Password</label></b>
+                        </td>
+                        <td>
+                            <input type="password" name="password" class="text-fields" placeholder="Password" required autofocus>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" class="button-submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+    <br>
+</body>
+
+</html>
